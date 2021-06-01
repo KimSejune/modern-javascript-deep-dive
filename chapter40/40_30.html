@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      html, body {height: 100%;}
+    </style>
+  </head>
+  <body>
+    <p>버블링과 캡처링 이벤트 <button>버튼</button></p>
+
+    <script>
+      // 버블링 단계 캐치
+      document.body.addEventListener('click', () => {
+        console.log('Hanlder for body.');
+      });
+
+      // 캡처링 단계 캐치
+      // 만약 p를 버블링으로 변경하면 button클릭시 button -> p -> body 순으로 출력.
+      document.querySelector('p').addEventListener('click', () => {
+        console.log('Handler for P.');
+      }, true);
+
+      // 버블링 단계 캐치
+      document.querySelector('button').addEventListener('click', () => {
+        console.log('Handler for button.');
+      });
+    </script>
+  </body>
+  
+</html>
