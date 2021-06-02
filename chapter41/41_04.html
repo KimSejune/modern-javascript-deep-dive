@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button>click me</button>
+    <pre>일반 클릭 이벤트 카운터<span class="normal-msg">0</span></pre>
+    <pre>디바운스 클릭 이벤트 카운터<span class="debounce-msg">0</span></pre>
+    <pre>스로틀 클릭 이벤트 카운터<span class="throttle-msg">0</span></pre>
+    <script>
+      const $button = document.querySelector('button');
+      const $normalMsg = document.querySelector('.normal-msg');
+      const $debounceMsg = document.querySelector('.debounce-msg');
+      const $throttleMsg = document.querySelector('.throttle-msg');
+
+      const debounce = (callback, delay) => {        
+        let timerId;
+        // debounce 함수는 timerId를 기억하는 클로저를 반환한다.
+        return event => {
+          // delay가 경과하기 이전에 이벤트가 발생하면 이전 타이머를 취소하고 새로운 타이머를 재설정한다.
+          // 따라서 delay보다 짧은 간격으로 이벤트가 발생하면 callback은 호출되지 않는다.
+          if (timerId) clearTimeout(timerId);
+          timerId = setTimeout(callback, delay, event);
+        };
+      };
+
+      const throttle = (callback, delay) => {
+        let timerId;
+        return event => {
+          if (timerId) return;
+          timerId = setTimeout(() => {
+            callback(event);
+            timerId = null;
+          }, delay, event);
+        };
+      };
+
+      $button.addEventListener('click', () => {
+        $normalMsg.textContent = +$normalMsg.textContent + 1;
+      });
+
+      $button.addEventListener('click', debounce(() => {
+        $debounceMsg.textContent = +$debounceMsg.textContent + 1;
+      }, 500));
+
+      $button.addEventListener('click', throttle(() => {
+        $throttleMsg.textContent = +$throttleMsg.textContent + 1;
+      }, 500));
+      
+    </script>
+  </body>
+</html>
