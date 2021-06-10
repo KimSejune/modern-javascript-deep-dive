@@ -1,0 +1,13 @@
+function* getFunc() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+// 제너레이터 함수를 호출하면 제너레이터 객체를 반환한다.
+const generator = getFunc();
+
+// 제너레이터 객체는 이터러블이면서 동시에 이터레이터다.
+// 이터러블은 Symbol.iterator 메서드를 직접 구현하거나 프로토타입 체인을 통해 상속받은 객체다.
+console.log(Symbol.iterator in generator); // true
+console.log('next' in generator); // true
