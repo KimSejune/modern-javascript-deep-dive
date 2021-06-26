@@ -69,12 +69,13 @@ Excution Context는 `식별자(변수, 함수, 클래스 등의 이름)를 등�
 ### 전역 코드 평가
 
 1. Global Execution Context 생성 => Push Execution Context Stack.
-2. Global Rexical Environment 생성  => Binding Global Execution Context
-  2.1 Global Environment Record 생성  
-    2.1.1 Object Environment Record 생성 => var 키워드 선언한 전역 변수, 함수 선언문으로 정의한 전역 함수, 빌트인 전역 프로퍼티와 전역 함수 표준 빌트인 객체. BindingObject 연결  
-    2.1.2 Declarative Environment Record 생성  => let, const 키워드로 선언한 전역 변수.  
-  2.2 this binding  
-  2.3 Outer Lexical Environment 참조 결정.
+2. Global Rexical Environment 생성  => Binding Global Execution Context  
+    2.1 Global Environment Record 생성  
+    * 2.1.1 Object Environment Record 생성 => var 키워드 선언한 전역 변수, 함수 선언문으로 정의한 전역 함수, 빌트인 전역 프로퍼티와 전역 함수 표준 빌트인 객체. BindingObject 연결  
+    * 2.1.2 Declarative Environment Record 생성  => let, const 키워드로 선언한 전역 변수.  
+
+    2.2 this binding  
+    2.3 Outer Lexical Environment 참조 결정.
 
 > 전역 변수와 전역 함수는 `BindingObject를 통해 전역 객체의 프로퍼티와 메서드`가 된다.
 
