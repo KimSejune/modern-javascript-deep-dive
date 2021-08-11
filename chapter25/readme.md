@@ -149,7 +149,7 @@ console.log(derived instanceof Base2); // false;
 
 ### [[HomeObject]]
 * `ES6 메서드 축약 표현으로 정의된 함수만이 [[HomeObject]]를 갖는다`.
-* `super를 참조`할 수 있다.
+* [[HomeObject]]]를 가지는 함수만이 `super를 참조`할 수 있다.
 * 메서드 자신을 바인딩하고 있는 객체를 가리킨다.
 * 자신을 바인딩하고 있는 객체의 프로토타입을 찾을 수 있다.  
 
